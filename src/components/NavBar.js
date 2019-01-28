@@ -19,7 +19,7 @@ class NavBar extends Component {
   const styles = {
     viewStyle: {
       backgroundColor: '#d3d3d3',
-      justifyContent: 'flex-end',
+      justifyContent: 'flex-start',
       alignItems: 'center',
       height: 60,
       paddingTop: 15,
@@ -29,11 +29,6 @@ class NavBar extends Component {
       elevation: 5,
       position: 'relative',
       flexDirection: 'row'
-    },
-    textStyle: {
-      fontSize: 20,
-      textAlign: 'center',
-      flex: 2
     }
   };
   

@@ -32,17 +32,19 @@ class ShowInfo extends Component {
     render() {
     return (
       <Card>
+        {/* Show Name And Image */}
        {this.state.showInformation !== '' ?  
        <CardSection>
-            <View style={styles.thumbnailContainerStyle}>
-                <Image style={styles.thumbnailStyle} source={{ uri: `https://${this.state.showInformation.firstChild.children[0].firstChild.attributes.src}` }} />
-            </View>
             <View style={styles.headerContentStyle}>
                 <Text style={styles.headerTextStyle}>{this.state.showInformation.firstChild.children[0].firstChild.attributes.alt}</Text>
+            </View>
+            <View style={styles.thumbnailContainerStyle}>
+                <Image style={styles.thumbnailStyle} source={{ uri: `https://${this.state.showInformation.firstChild.children[0].firstChild.attributes.src}` }} />
             </View>
         </CardSection> 
          : null}
 
+         {/* Show Description */}
         {this.state.showInformation !== '' ?
         <CardSection>
             <View>
@@ -56,38 +58,43 @@ class ShowInfo extends Component {
             <View style={styles.viewWrapper}>
                 <Text style={styles.headerStyle}>{this.state.showGeneralInfoPanel.children[0].children[0].text}</Text>
 
-                <View style={styles.viewStyle}>
-                    <Text>{this.state.showGeneralInfoPanel.children[1].children[2].children[0].text}</Text>   
+                {/* Network*/}
+                <View style={styles.viewStyle}>  
+                    <Text>{this.state.showGeneralInfoPanel.children[1].children[0].children[0].text}</Text>
                     <Image style={styles.flagImage} source={{ uri: `https://${this.state.showGeneralInfoPanel.children[1].children[1].attributes.src}` }} />
-                    <Text>{this.state.showGeneralInfoPanel.children[1].children[0].children[0].text}</Text>   
+                    <Text>{this.state.showGeneralInfoPanel.children[1].children[2].children[0].text}</Text>    
                 </View>
 
-                <View style={styles.viewStyle}>
+                {/* Schedule*/}
+                <View style={styles.viewStyle}>   
+                    <Text>{this.state.showGeneralInfoPanel.children[2].children[0].children[0].text}</Text>
                     <Text>{removeSpaceFromString(this.state.showGeneralInfoPanel.children[2].children[1].text)}</Text>   
-                    <Text>{this.state.showGeneralInfoPanel.children[2].children[0].children[0].text}</Text>   
                 </View>
 
-                <View style={styles.viewStyle}>
+                {/* Status*/}
+                <View style={styles.viewStyle}>   
+                    <Text>{this.state.showGeneralInfoPanel.children[3].children[0].children[0].text}</Text>
                     <Text>{this.state.showGeneralInfoPanel.children[3].children[1].text}</Text>   
-                    <Text>{this.state.showGeneralInfoPanel.children[3].children[0].children[0].text}</Text>   
                 </View>
 
-                <View style={styles.viewStyle}>
+                {/* Show Type*/}
+                <View style={styles.viewStyle}>   
+                    <Text>{this.state.showGeneralInfoPanel.children[4].children[0].children[0].text}</Text>
                     <Text>{removeSpaceFromString(this.state.showGeneralInfoPanel.children[4].children[1].text)}</Text>   
-                    <Text>{this.state.showGeneralInfoPanel.children[4].children[0].children[0].text}</Text>   
                 </View>
 
+                 {/* Genres*/}   
                  <View style={styles.viewStyle}>
-                    {this.state.showGeneralInfoPanel.children[5].children[1].children[2] ?   
-                    <Text>{this.state.showGeneralInfoPanel.children[5].children[1].children[2].children[0].text}</Text>
-                    : null
-                    }
+                    <Text>{this.state.showGeneralInfoPanel.children[5].children[0].children[0].text}</Text>
+                    <Text>{this.state.showGeneralInfoPanel.children[5].children[1].children[0].children[0].text} |</Text>
                     {this.state.showGeneralInfoPanel.children[5].children[1].children[1] ?
                     <Text>{this.state.showGeneralInfoPanel.children[5].children[1].children[1].children[0].text} |</Text>
                     : null
-                    } 
-                    <Text>{this.state.showGeneralInfoPanel.children[5].children[1].children[0].children[0].text} |</Text>     
-                    <Text>{this.state.showGeneralInfoPanel.children[5].children[0].children[0].text}</Text>   
+                    }
+                    {this.state.showGeneralInfoPanel.children[5].children[1].children[2] ?   
+                    <Text>{this.state.showGeneralInfoPanel.children[5].children[1].children[2].children[0].text}</Text>
+                    : null
+                    }         
                 </View>
             </View>    
          
@@ -101,17 +108,19 @@ class ShowInfo extends Component {
 
 const styles = {
     thumbnailContainerStyle: {
-      justifyContent: 'center',
+      flex: 1,
+      justifyContent: 'space-around',
+      alignItems: 'flex-end',
       marginLeft: 2,
-      marginRight: 10,
-      flex: 1
+      marginRight: 2,
     },
     thumbnailStyle: {
       height: 50,
       width: 50
     },
     headerContentStyle: {
-      justifyContent: 'space-around'
+      flex: 1,
+      justifyContent: 'space-around',
     },
     headerTextStyle: {
       fontSize: 18,
@@ -127,7 +136,7 @@ const styles = {
         flexDirection: 'row',
         height: 70,
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
         marginTop: 20,
         marginBottom: 20
     },
